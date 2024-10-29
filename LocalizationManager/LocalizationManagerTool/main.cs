@@ -19,7 +19,9 @@ namespace LocalizationManagerTool
 
     public class CsvImporter
     {
-        public List<TranslationEntry> ImportFromCsv(string filePath)
+        public string filePath = "\LocalizationManagerTool";
+
+        public List<TranslationEntry> ImportFromCsv()
         {
             var entries = new List<TranslationEntry>();
 
