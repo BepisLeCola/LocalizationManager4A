@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Diagnostics;
 
 namespace LocalizationManagerTool
 {
@@ -19,7 +20,7 @@ namespace LocalizationManagerTool
 
     public class CsvImporter
     {
-        public string filePath = "\LocalizationManagerTool";
+        public string filePath = "LocalizationManagerTool/";
 
         public List<TranslationEntry> ImportFromCsv()
         {
@@ -28,8 +29,13 @@ namespace LocalizationManagerTool
             // Lire le fichier CSV
             using (var reader = new StreamReader(filePath))
             {
-                string headerLine = reader.ReadLine(); // Lire la première ligne (en-tête)
-                if (headerLine == null) return entries; // Retourner si le fichier est vide
+                string headerLine = reader.ReadLine();
+                if (headerLine == null)
+                {
+                    Debug.Write("Y'a rieng");
+                    return entries; // Retourner si le fichier est vide
+
+                }
 
                 // Lire les lignes suivantes
                 while (!reader.EndOfStream)
