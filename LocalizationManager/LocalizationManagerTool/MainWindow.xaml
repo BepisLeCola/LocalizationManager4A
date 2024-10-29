@@ -8,9 +8,28 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid VerticalAlignment="Top" Margin="0,0,0,-1">
         <Menu VerticalAlignment="Top" Height="22">
-            <Button Content="File" Click="Button_Click"/>
-            <Button Content="Edit" Click="Button_Edit"/>
+            <Button Name="buttonFile" Content="File" Click="Button_Click"/>
+            
+            <Button Name="buttonEdit" Content="Edit" Click="Button_Edit"/>
         </Menu>
+        <Popup x:Name="popupFile" Placement="Bottom" PlacementTarget="{Binding ElementName=buttonFile}" StaysOpen="False" AllowsTransparency="True">
+            <Border BorderBrush="Black" BorderThickness="1" Background="White">
+                <StackPanel>
+                    <Button Content="File Option 1" />
+                    <Button Content="File Option 2" />
+                    <Button Content="File Option 3"/>
+                </StackPanel>
+            </Border>
+        </Popup>
+        <Popup x:Name="popupEdit" Placement="Bottom" PlacementTarget="{Binding ElementName=buttonEdit}" StaysOpen="False" AllowsTransparency="True">
+            <Border BorderBrush="Black" BorderThickness="1" Background="White">
+                <StackPanel>
+                    <Button Content="Edit Option 1" />
+                    <Button Content="Edit Option 2" />
+                    <Button Content="Edit Option 3"/>
+                </StackPanel>
+            </Border>
+        </Popup>
         <DataGrid Name="dataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,22,0,0"/>
 
     </Grid>

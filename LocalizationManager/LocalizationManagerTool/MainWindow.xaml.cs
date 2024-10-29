@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -39,12 +40,26 @@ namespace LocalizationManagerTool
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            if (popupFile.IsOpen)
+            {
+                popupFile.IsOpen = false;
+            }
+            else
+            {
+                popupFile.IsOpen = true;
+            }
         }
 
         private void Button_Edit(object sender, RoutedEventArgs e)
         {
-
+            if (popupEdit.IsOpen)
+            {
+                popupEdit.IsOpen = false;
+            }
+            else
+            {
+                popupEdit.IsOpen = true;
+            }
         }
     }
 }
