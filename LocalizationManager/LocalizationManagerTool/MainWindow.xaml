@@ -15,9 +15,9 @@
         <Popup x:Name="popupFile" Placement="Bottom" PlacementTarget="{Binding ElementName=buttonFile}" StaysOpen="False" AllowsTransparency="True">
             <Border BorderBrush="Black" BorderThickness="1" Background="White">
                 <StackPanel>
-                    <Button Content="File Option 1" />
-                    <Button Content="File Option 2" />
-                    <Button Content="File Option 3"/>
+                    <Button Content="Import JSON..." Click="ImportJSON_Click" />
+                    <Button Content="Import XML..." Click="ImportXML_Click" />
+                    <Button Content="Import CSV..." Click="ImportCSV_Click"/>
                 </StackPanel>
             </Border>
         </Popup>
