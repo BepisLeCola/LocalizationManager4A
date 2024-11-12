@@ -24,7 +24,7 @@
         <Popup x:Name="popupEdit" Placement="Bottom" PlacementTarget="{Binding ElementName=buttonEdit}" StaysOpen="False" AllowsTransparency="True">
             <Border BorderBrush="Black" BorderThickness="1" Background="White">
                 <StackPanel>
-                    <Button Content="Edit Option 1" />
+                    <Button Content="Export JSON..." Click="ExportJSON_Click"/>
                     <Button Content="Edit Option 2" />
                     <Button Content="Edit Option 3"/>
                 </StackPanel>

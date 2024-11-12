@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.Json;
 using System.Xml.Linq;
+using System.Xml;
 
 namespace LocalizationManagerTool
 {
@@ -63,6 +64,18 @@ namespace LocalizationManagerTool
             else
             {
                 popupEdit.IsOpen = true;
+            }
+        }
+
+        private void ExportJSON_Click(object sender, RoutedEventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "JSON Files (*.json)|*.json";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                // Sérialisation avec System.Text.Json
+                var json = JsonSerializer.Serialize(Translations, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(saveFileDialog.FileName, json);
             }
         }
 
