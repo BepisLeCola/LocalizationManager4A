@@ -72,22 +72,39 @@ namespace LocalizationManagerTool
             openFileDialog.Filter = "JSON Files (*.json)|*.json";
             if (openFileDialog.ShowDialog() == true)
             {
-                // Lire le contenu du fichier JSON
-                string json = File.ReadAllText(openFileDialog.FileName);
-
-                // Désérialiser le JSON en une liste d'objets Translation
-                var translations = JsonSerializer.Deserialize<List<Translation>>(json);
-
-                // Vider les traductions existantes dans la collection
-                Translations.Clear();
-
-                // Ajouter les traductions désérialisées à la collection ObservableCollection
-                foreach (var translation in translations)
+                string json;
+                try
                 {
-                    Translations.Add(translation);
+                    // Lire le fichier en utilisant StreamReader avec Encoding.UTF8 sans BOM
+                    using (var reader = new StreamReader(openFileDialog.FileName, new UTF8Encoding(false)))
+                    {
+                        json = reader.ReadToEnd();
+                    }
+
+                    // Désérialiser le JSON en une liste d'objets Translation
+                    var translations = JsonSerializer.Deserialize<List<Translation>>(json);
+
+                    // Vider les traductions existantes dans la collection
+                    Translations.Clear();
+
+                    // Ajouter les traductions désérialisées à la collection ObservableCollection
+                    foreach (var translation in translations)
+                    {
+                        Translations.Add(translation);
+                    }
+                }
+                catch (JsonException ex)
+                {
+                    MessageBox.Show($"Erreur lors de la désérialisation du JSON : {ex.Message}");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erreur générale : {ex.Message}");
                 }
             }
         }
+
+
 
         private void ImportXML_Click(object sender, RoutedEventArgs e)
         {
