@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LocalizationManagerTool"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Localization Manager" Height="450" Width="800">
     <Grid VerticalAlignment="Top" Margin="0,0,0,-1">
+        <!-- Menu principal -->
         <Menu VerticalAlignment="Top" Height="22">
             <Button Name="buttonFile" Content="File" Click="Button_Click"/>
-            
             <Button Name="buttonEdit" Content="Edit" Click="Button_Edit"/>
         </Menu>
+
+        <!-- Popup pour le menu File -->
         <Popup x:Name="popupFile" Placement="Bottom" PlacementTarget="{Binding ElementName=buttonFile}" StaysOpen="False" AllowsTransparency="True">
             <Border BorderBrush="Black" BorderThickness="1" Background="White">
                 <StackPanel>
@@ -21,6 +23,8 @@
                 </StackPanel>
             </Border>
         </Popup>
+
+        <!-- Popup pour le menu Edit -->
         <Popup x:Name="popupEdit" Placement="Bottom" PlacementTarget="{Binding ElementName=buttonEdit}" StaysOpen="False" AllowsTransparency="True">
             <Border BorderBrush="Black" BorderThickness="1" Background="White">
                 <StackPanel>
@@ -30,7 +34,8 @@
                 </StackPanel>
             </Border>
         </Popup>
-        <DataGrid Name="dataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,22,0,0"/>
 
+        <!-- DataGrid pour afficher les traductions -->
+        <DataGrid Name="dataGrid" Margin="0,22,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
     </Grid>
 </Window>
